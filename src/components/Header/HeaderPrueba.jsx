@@ -16,6 +16,17 @@ function HeaderPrueba(props) {
     }, 3000);
   };
 
+  const toggleTablaVisibility = () => {
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      props.toggleVisibility2();
+    }, 3000);
+  };
+
+
+
   return (
     <nav className="bg-verde">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-16 px-4 border-b border-solid border-slate-600 font-[Barlow]">
@@ -28,7 +39,8 @@ function HeaderPrueba(props) {
           Tienda UVM
         </div>
         <div className="hidden md:block">
-          <Menu toggleHeroVisibility={toggleHeroVisibility} />
+          <Menu toggleHeroVisibility={toggleHeroVisibility} toggleTablaVisibility={toggleTablaVisibility} />
+
         </div>
         <button
           type="button"

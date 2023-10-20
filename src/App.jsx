@@ -21,10 +21,20 @@ function App() {
       setShowProductos(false);
       setShowTabla(true)
     };
+
+    const toggleVisibility2 = () => {
+      setShowHero(true);
+      setShowProductos(true);
+      setShowTabla(false)
+    };
+
+
+
+
   
     return (
       <>
-        <HeaderPrueba toggleVisibility={toggleVisibility} />
+        <HeaderPrueba toggleVisibility={toggleVisibility} toggleVisibility2={toggleVisibility2} />
         {showHero && <Hero />}
         {showProductos && <ProductosL />}
         {showTabla && <TablaProductos/>}

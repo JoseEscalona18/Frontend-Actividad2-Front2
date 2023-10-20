@@ -6,6 +6,8 @@ const Menu = (props) => {
       <a
         href="#"
         className="block md:inline-block px-3 py-2 rounded-md text-white bg-verdeo focus:outline-none focus:text-white focus:bg-verdeo"
+        onClick={props.toggleTablaVisibility} // Llama a la función showComponents al hacer clic
+
       >
         Inicio
       </a>
