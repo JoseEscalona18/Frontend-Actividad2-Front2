@@ -3,6 +3,8 @@ import Hero from './components/Hero'
 import HeaderPrueba from './components/Header/HeaderPrueba'
 import Footer from './components/Footer'
 import ProductosL from './components/ProductosL'
+import TablaProductos from './components/Tabla'
+
 import './App.css'
 
 function App() {
@@ -14,6 +16,8 @@ function App() {
     <Hero></Hero>
 
     <ProductosL></ProductosL>
+    <TablaProductos></TablaProductos>
+
     <Footer></Footer>
     
     </>
