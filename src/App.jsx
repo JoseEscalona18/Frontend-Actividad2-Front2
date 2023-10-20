@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import Header from './components/Header'
-import TablaProductos from '../../ActividadFront2/src/Components/TablaProductos'
+import Hero from './components/Hero'
+import HeaderPrueba from './components/Header/HeaderPrueba'
+import Footer from './components/Footer'
+import ProductosL from './components/ProductosL'
 import './App.css'
 
 function App() {
@@ -8,8 +10,12 @@ function App() {
 
   return (
     <>
-    <Header></Header>
-    <TablaProductos/>
+    <HeaderPrueba></HeaderPrueba>
+    <Hero></Hero>
+
+    <ProductosL></ProductosL>
+    <Footer></Footer>
+    
     </>
   )
 }
