@@ -12,10 +12,14 @@ function App() {
 
     const [showHero, setShowHero] = useState(true);
     const [showProductos, setShowProductos] = useState(true);
+    const [showTabla, setShowTabla] = useState(false);
+
+
   
     const toggleVisibility = () => {
       setShowHero(false);
       setShowProductos(false);
+      setShowTabla(true)
     };
   
     return (
@@ -23,7 +27,7 @@ function App() {
         <HeaderPrueba toggleVisibility={toggleVisibility} />
         {showHero && <Hero />}
         {showProductos && <ProductosL />}
-        <TablaProductos></TablaProductos>
+        {showTabla && <TablaProductos/>}
 
         <Footer />
       </>

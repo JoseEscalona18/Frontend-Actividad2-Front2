@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+
 const API = 'http://localhost:4000';
 
 const ProductCard = ({ imagen, title, description, availableQuantity, price }) => {

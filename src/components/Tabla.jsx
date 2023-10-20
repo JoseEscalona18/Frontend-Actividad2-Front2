@@ -33,7 +33,9 @@ function TablaProductos() {
 
   return (
     <div className='relative overflow-x-auto shadow-md sm:rounded-lg items-center flex flex-col mb-32'>
-      <h1 className='text-lg'>Tabla de Productos</h1>
+        <div className="bg-verdeo rounded-lg p-4 mx-4 sm:mx-28 mb-8">
+          <h2 className="text-white text-3xl font-bold text-center">Productos en Venta</h2>
+        </div>
       {data.length > 0 ? (
         <table className='sm:text-xs md:text-sm text-left text-gray-500 dark:text-gray-400 mb-6 mx-auto'>
           <thead className="text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
