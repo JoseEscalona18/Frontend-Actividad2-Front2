@@ -32,7 +32,7 @@ function TablaProductos() {
   };
 
   return (
-    <div className='relative overflow-x-auto shadow-md sm:rounded-lg items-center flex flex-col'>
+    <div className='relative overflow-x-auto shadow-md sm:rounded-lg items-center flex flex-col mb-32'>
       <h1 className='text-lg'>Tabla de Productos</h1>
       {data.length > 0 ? (
         <table className='sm:text-xs md:text-sm text-left text-gray-500 dark:text-gray-400 mb-6 mx-auto'>

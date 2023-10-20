@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class Footer extends Component {
   render() {
     return (
-<footer class="p-4 bg-verdeo md:p-8 lg:p-10 dark:bg-gray-800">
+<footer class="p-4 bg-verdeo md:p-8 lg:p-10 dark:bg-gray-800 font-[Barlow]">
   <div class="mx-auto max-w-screen-xl text-center">
       <a href="#" class="flex justify-center items-center text-2xl font-semibold text-gray-900 dark:text-white">
         <img className=" animate-bounce h-32 inline mr-4"src="./uvm.png" alt="" />

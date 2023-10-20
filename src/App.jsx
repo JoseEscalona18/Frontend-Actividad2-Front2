@@ -5,6 +5,7 @@ import HeaderPrueba from './components/Header/HeaderPrueba';
 import Footer from './components/Footer';
 import ProductosL from './components/ProductosL';
 import './App.css';
+import TablaProductos from './components/Tabla'
 
 function App() {
   const [count, setCount] = useState(0);
@@ -22,6 +23,8 @@ function App() {
         <HeaderPrueba toggleVisibility={toggleVisibility} />
         {showHero && <Hero />}
         {showProductos && <ProductosL />}
+        <TablaProductos></TablaProductos>
+
         <Footer />
       </>
   );
