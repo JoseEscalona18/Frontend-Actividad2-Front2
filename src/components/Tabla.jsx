@@ -7,9 +7,24 @@ function TablaProductos() {
   const [data, setData] = useState([]);
   const [productoSeleccionado, setProductoSeleccionado] = useState(null);
   const [edicionProducto, setEdicionProducto] = useState(null);
+  const [isLoading, setIsLoading] = useState(false); // Nuevo estado para indicador de carga
+
+  // Evitar el desplazamiento de la página mientras se muestra el Loader
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
 
   useEffect(() => {
-    axios.get(API)
+    fetchData(); // Llama a fetchData al cargar el componente
+  }, []);
+
+  const fetchData = () => {
+    setIsLoading(true); // Inicia el indicador de carga
+    axios
+      .get(API)
       .then(response => {
         if (Array.isArray(response.data)) {
           setData(response.data);
@@ -19,11 +34,15 @@ function TablaProductos() {
       })
       .catch(error => {
         console.error('Error:', error);
+      })
+      .finally(() => {
+        setIsLoading(false); // Finaliza el indicador de carga
       });
-  }, []);
+  };
 
-  const eliminarProducto = (id) => {
-    axios.delete(API, { data: { serial: id } })
+  const eliminarProducto = id => {
+    axios
+      .delete(API, { data: { serial: id } })
       .then(response => {
         setData(data.filter(producto => producto.serial !== id));
       })
@@ -32,33 +51,41 @@ function TablaProductos() {
       });
   };
 
-  const editarProducto = (producto) => {
+  const editarProducto = producto => {
     setEdicionProducto({ ...producto });
     setProductoSeleccionado(producto);
   };
 
   const actualizarProducto = () => {
-    axios.put(`${API}`, {serial: edicionProducto.serial, datosActualizados: edicionProducto})
+    axios
+      .put(`${API}`, { serial: edicionProducto.serial, datosActualizados: edicionProducto })
       .then(response => {
-        setData(data.map(producto => (producto.serial === edicionProducto.serial ? edicionProducto : producto)));
+        fetchData(); // Actualiza los datos de la tabla
         setProductoSeleccionado(null);
-        setEdicionProducto(null);
+        setEdicionProducto(null); 
       })
       .catch(error => {
         console.error('Error al actualizar el producto:', error);
       });
   };
 
-  const handleInputChange = (event) => {
+  const handleInputChange = event => {
     const { name, value } = event.target;
     setEdicionProducto({ ...edicionProducto, [name]: value });
   };
 
   return (
-    <div className='relative overflow-x-auto shadow-md sm:rounded-lg items-center flex flex-col mb-32 mt-8'>
-      <div className="bg-verdeo rounded-lg p-4 mx-4 sm:mx-28 mb-8">
-        <h2 className="text-white text-3xl font-bold text-center">Productos en Venta</h2>
+    <div className='relative overflow-x-auto shadow-md sm:rounded-lg items-center flex flex-col mb-8 mt-8 font-[Barlow]'>
+      <div className="bg-verdeo rounded-lg p-4 mx-32 sm:mx-28 mb-8">
+        <h2 className="text-white text-3xl font-bold text-center">Inventario/Crear</h2>
       </div>
+      <button
+  type="button"
+  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+  onClick={fetchData}
+>
+  Actualizar tabla
+</button>
         {productoSeleccionado && (
           <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-75">
             <div className="bg-white rounded-lg p-8 max-w-md">
@@ -195,6 +222,7 @@ function TablaProductos() {
         </div>
       )}
     </div>
+    
   );
 }
 

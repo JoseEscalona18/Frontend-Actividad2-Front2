@@ -40,7 +40,6 @@ function App() {
         {showProductos && <ProductosL />}
         {showTabla && <TablaProductos/>}
         {showCrear && <AgregarProductos/>} 
-
         
         <Footer />
       </>

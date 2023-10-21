@@ -7,7 +7,7 @@ const API = 'http://localhost:4000';
 const ProductCard = ({ imagen, title, description, availableQuantity, price }) => {
   return (
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 font-[Barlow]">
-      <img className="p-8 rounded-t-lg" src={imagen} alt="product image" />
+      <img className="p-8 rounded-t-lg" src={imagen} alt="imagen del producto" />
       <div className="px-5 pb-5">
         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{title}</h5>
         <p className="text-gray-600 dark:text-gray-400">{description}</p>

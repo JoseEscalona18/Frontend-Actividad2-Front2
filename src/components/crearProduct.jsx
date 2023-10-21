@@ -43,7 +43,7 @@ function AgregarProductos() {
   return (
     <div>
               <div className="bg-verdeo rounded-lg p-4 mx-4 mt-8 sm:mx-28 mb-8">
-          <h2 className="text-white text-3xl font-bold text-center">Inventario / Crear</h2>
+          <h2 className="text-white text-3xl font-bold text-center">Productos en Venta</h2>
         </div>
         <div className="min-h-screen bg-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 mb-8">
       <div className="max-w-md w-full space-y-8">

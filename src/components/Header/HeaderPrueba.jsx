@@ -62,7 +62,7 @@ function HeaderPrueba(props) {
           </svg>
         </button>
       </div>
-      <div className="md:hidden">{showMobileMenu && <Menu />}</div>
+      <div className="md:hidden">{showMobileMenu && <Menu toggleHeroVisibility={toggleHeroVisibility} toggleTablaVisibility={toggleTablaVisibility}  />}</div>
       {loading && <Loader />}
     </nav>
   );
