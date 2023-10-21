@@ -5,7 +5,7 @@ Es una aplicación web creada utilizando ReactJS con Vite como bundler, Tailwind
 
 # **Requisitos e instalación:**
 
-1. Se necesitan los siguientes componentes: Node.JS y NPM
+1. Se necesitan los siguientes componentes: Node.JS, MongoDB y NPM
 
 2. Se dirigen hacia la dirección de ambos Proyectos en Github: [https://github.com/JoseEscalona18/Frontend-Actividad2-Front2 y https://github.com/JoseEscalona18/Backend-Actividad2-Front2
 
