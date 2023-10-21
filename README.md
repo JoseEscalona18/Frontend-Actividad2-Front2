@@ -7,19 +7,19 @@ Es una aplicación web creada utilizando ReactJS con Vite como bundler, Tailwind
 
 1. Se necesitan los siguientes componentes: Node.JS y NPM
 
-2. Se dirigen hacia la dirección del Proyecto en Github: [https://github.com/JoseEscalona18/Frontend-Actividad2-Front2]
+2. Se dirigen hacia la dirección de ambos Proyectos en Github: [https://github.com/JoseEscalona18/Frontend-Actividad2-Front2 y https://github.com/JoseEscalona18/Backend-Actividad2-Front2
 
-3. Seleccionan a Code y Local, luego lo descargamos en Download ZIP
+3. Seleccionan a Code y Local, luego los descargamos en Download ZIP
 
-4. A partir de esto, nos quedaria en ZIP y lo extraemos
+4. A partir de esto, nos quedaria en ZIP cada uno y los extraemos, meteremos ambos en una misma carpeta
 
-5. Luego, abrimos Visual Studio Code y pasamos/abrimos la carpeta dentro del programa, desde Archivo/Abrir Carpeta
+5. Luego, abrimos Visual Studio Code y pasamos/abrimos la carpeta dentro del programa, desde Archivo/Abrir Carpeta, y hacemos lo mismo en otra ventana, una para el back y otra para el front
 
-6. Ahora que tenemos nuestro proyecto colocado, tan solo tenemos que abrir consola con CTRL + Ñ o Desde Terminal/Abrir Terminal
+6. Ahora que tenemos nuestro proyecto colocado, tan solo tenemos que abrir consola con CTRL + Ñ o Desde Terminal/Abrir Terminal en cada una de las ventanas
 
-7. Al iniciar la terminal, vamos a instalar los paquetes que tiene el proyecto, utilizando `npm i` o `npm install`
+7. Al iniciar la terminal, vamos a instalar los paquetes que tiene el proyecto, utilizando `npm i` o `npm install` esto debe hacerse en ambas ventanas
 
-8. Luego usamos el comando `npm run dev` y el programa se ejecutara
+8. Luego usamos el comando `npm run dev` y el programa se ejecutara, esto debe hacerse en ambas ventanas
 
 9. Vamos hacia [http://localhost:3000](http://localhost:3000) y ahí tendremos la página ejecutándose.
 
