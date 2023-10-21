@@ -4,6 +4,7 @@ import axios from 'axios';
 const API = 'http://localhost:4000';
 
 function AgregarProductos() {
+    // Estado local para almacenar los valores de los campos del formulario
   const [serial, setSerial] = useState('');
   const [nombre, setNombre] = useState('');
   const [descripcion, setDescripcion] = useState('');
@@ -11,6 +12,8 @@ function AgregarProductos() {
   const [precio, setPrecio] = useState(0);
   const [categoria, setCategoria] = useState('');
   const [imagen, setImagen] = useState('');
+
+    // Estado local para mostrar la respuesta del servidor y controlar la visualización del mensaje
   const [respuesta, setRespuesta] = useState('');
   const [mostrarMensaje, setMostrarMensaje] = useState(false);
 
@@ -28,9 +31,12 @@ function AgregarProductos() {
     };
 
     try {
+            // Envío de la solicitud POST al backend para agregar el producto
       const response = await axios.post(`${API}`, producto);
       setRespuesta(response.data); 
       setMostrarMensaje(true); 
+
+            // Ocultar el mensaje después de 3 segundos (3000 milisegundos)
       setTimeout(() => {
         setMostrarMensaje(false); 
       }, 3000);
@@ -41,10 +47,8 @@ function AgregarProductos() {
   };
 
   return (
+    //Formulario en cuestión
     <div>
-              <div className="bg-verdeo rounded-lg p-4 mx-4 mt-8 sm:mx-28 mb-8">
-          <h2 className="text-white text-3xl font-bold text-center">Productos en Venta</h2>
-        </div>
         <div className="min-h-screen bg-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 mb-8">
       <div className="max-w-md w-full space-y-8">
         <div>
@@ -106,7 +110,7 @@ function AgregarProductos() {
           />
         </label>
         <label>
-          Foto:
+          Foto(URL):
           <input
             type="text"
             value={imagen}
@@ -123,6 +127,8 @@ function AgregarProductos() {
             </button>
           </div>
         </form>
+                  {/* Mostrar mensaje de respuesta del servidor si está activado */}
+
         {mostrarMensaje && (
           <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 mt-6 rounded">
             <p className="text-sm font-bold">{respuesta}</p>

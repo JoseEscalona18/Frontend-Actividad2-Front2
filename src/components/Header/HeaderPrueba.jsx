@@ -25,6 +25,13 @@ function HeaderPrueba(props) {
     }, 3000);
   };
 
+  // El componente HeaderPrueba representa la barra de navegación en la parte superior de la página.
+
+  // El estado showMobileMenu se utiliza para mostrar o ocultar el menú en dispositivos móviles cuando se hace clic en el botón de menú.
+
+  // La función toggleHeroVisibility se activa cuando se hace clic en un elemento del menú y se encarga de mostrar un componente adicional (no mostrado en el código proporcionado). También activa el Loader durante 3 segundos para simular una carga.
+
+  // La función toggleTablaVisibility se activa cuando se hace clic en otro elemento del menú y se encarga de mostrar otro componente (no mostrado en el código proporcionado). También activa el Loader durante 3 segundos para simular una carga.
 
 
   return (
@@ -40,6 +47,7 @@ function HeaderPrueba(props) {
         </div>
         <div className="hidden md:block">
           <Menu toggleHeroVisibility={toggleHeroVisibility} toggleTablaVisibility={toggleTablaVisibility} />
+          
 
         </div>
         <button
@@ -63,7 +71,10 @@ function HeaderPrueba(props) {
         </button>
       </div>
       <div className="md:hidden">{showMobileMenu && <Menu toggleHeroVisibility={toggleHeroVisibility} toggleTablaVisibility={toggleTablaVisibility}  />}</div>
+      {/* El bloque de código anterior representa el menú desplegable para dispositivos móviles. Se muestra solo cuando showMobileMenu es verdadero. */}
       {loading && <Loader />}
+      {/* El componente Loader se muestra si loading es verdadero, lo que indica que se está realizando una carga. */}
+
     </nav>
   );
 }
