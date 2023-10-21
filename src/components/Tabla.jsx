@@ -55,7 +55,7 @@ function TablaProductos() {
   };
 
   return (
-    <div className='relative overflow-x-auto shadow-md sm:rounded-lg items-center flex flex-col mb-32'>
+    <div className='relative overflow-x-auto shadow-md sm:rounded-lg items-center flex flex-col mb-32 mt-8'>
       <div className="bg-verdeo rounded-lg p-4 mx-4 sm:mx-28 mb-8">
         <h2 className="text-white text-3xl font-bold text-center">Productos en Venta</h2>
       </div>

@@ -38,8 +38,9 @@ function App() {
         <HeaderPrueba toggleVisibility={toggleVisibility} toggleVisibility2={toggleVisibility2} />
         {showHero && <Hero />}
         {showProductos && <ProductosL />}
-        {showCrear && <AgregarProductos/>} 
         {showTabla && <TablaProductos/>}
+        {showCrear && <AgregarProductos/>} 
+
         
         <Footer />
       </>
