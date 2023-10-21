@@ -21,16 +21,25 @@ function App() {
       setShowHero(false);
       setShowProductos(false);
       setShowTabla(true)
+      setShowCrear(true)
+    };
+
+    const toggleVisibility2 = () => {
+      setShowHero(true);
+      setShowProductos(true);
+      setShowTabla(false)
       setShowCrear(false)
     };
-  /*        {showCrear && <AgregarProductos/>}*/
+
+
+
     return (
       <>
-        <HeaderPrueba toggleVisibility={toggleVisibility} />
+        <HeaderPrueba toggleVisibility={toggleVisibility} toggleVisibility2={toggleVisibility2} />
         {showHero && <Hero />}
         {showProductos && <ProductosL />}
+        {showCrear && <AgregarProductos/>} 
         {showTabla && <TablaProductos/>}
-        <AgregarProductos/>
         
         <Footer />
       </>

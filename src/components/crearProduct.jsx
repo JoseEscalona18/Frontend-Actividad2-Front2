@@ -41,7 +41,7 @@ function AgregarProductos() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 mb-8">
       <div className="max-w-md w-full space-y-8">
         <div>
           <h1 className="text-center text-3xl font-semibold tracking-tight text-gray-900">Agregar Producto</h1>
