@@ -1,68 +1,136 @@
-# React + Vite
+# **Tienda UVM, Tienda de Productos Electrónicos**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Descripción:**
+Es una aplicación web creada utilizando ReactJS con Vite como bundler, Tailwind CSS y el plugin Flowbite, dicha aplicación web se conecta a una base de datos para realizar operaciones CRUD (Crear, Leer, Actualizar y Eliminar) sobre el inventario de la tienda. La aplicación web funciona como un SPA (Single Page Application) y utiliza programación reactiva para mostrar el inventario de productos que el usuario desee ver, agregar, modificar y eliminar.
 
-Currently, two official plugins are available:
+# **Requisitos e instalación:**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Se necesitan los siguientes componentes: Node.JS y NPM
 
+2. Se dirigen hacia la dirección del Proyecto en Github: [https://github.com/JoseEscalona18/Frontend-Actividad2-Front2]
 
-# Objetivo: Desarrollar una aplicación web utilizando React con Vite como bundler, que se conecte a un backend para realizar operaciones CRUD (Crear, Leer, Actualizar y Eliminar) sobre el inventario de una tienda. La aplicación deberá funcionar como un SPA (Single Page Application).
+3. Seleccionan a Code y Local, luego lo descargamos en Download ZIP
 
-Requerimientos:
+4. A partir de esto, nos quedaria en ZIP y lo extraemos
 
-- [1] Página de inicio: Al cargar la aplicación, se mostrará una lista productos disponibles en el inventario de la tienda. Cada producto deberá mostrar su nombre, descripción, precio, cantidad disponible e imagen representativa.
+5. Luego, abrimos Visual Studio Code y pasamos/abrimos la carpeta dentro del programa, desde Archivo/Abrir Carpeta
 
-- [2] Crear Producto: Se debe proporcionar un formulario para crear una nuevo producto. El formulario deberá contener campos para ingresar el nombre, descripción, precio, cantidad inicial, imagen y categoría. Al enviar el formulario, se deberá guardar en el backend y mostrarla en la lista.
+6. Ahora que tenemos nuestro proyecto colocado, tan solo tenemos que abrir consola con CTRL + Ñ o Desde Terminal/Abrir Terminal
 
+7. Al iniciar la terminal, vamos a instalar los paquetes que tiene el proyecto, utilizando `npm i` o `npm install`
 
-- [3] Actualizar: Cada producto en la lista deberá tener la opción de ser editada. Al hacer clic en el producto, se mostrará un formulario similar al de creación, pero con los campos prellenados con la información del producto seleccionada. Se deberá permitir modificar los campos de nombre, descripción, precio, cantidad, imagen, categoría e ingredientes relacionados. Al enviar el formulario de actualización, se deberán guardar los cambios en el backend y reflejarlos en la lista.
+8. Luego usamos el comando `npm run dev` y el programa se ejecutara
 
+9. Vamos hacia [http://localhost:3000](http://localhost:3000) y ahí tendremos la página ejecutándose.
 
-- [3] Eliminar: Cada producto en la lista deberá tener la opción de ser eliminada. Al hacer clic en la opción de eliminación, se mostrará una confirmación y, en caso de aceptarla, se eliminará tanto del backend como de la lista.
+# **Uso:**
 
+La aplicación es una SPA (Single Page Application), esta nos permite hacer un CRUD Básico desde una base de datos para gestionar el inventario:
 
-- [4] Búsqueda: Se deberá proporcionar un campo de búsqueda en la página de inicio, donde los usuarios puedan buscar el producto por su nombre, descripción o categoría. Al realizar la búsqueda, se deberán mostrar solo las que coincidan con los términos ingresados.
+- **Crear:** Desde la sección "crear" podremos agregar diferentes productos.
 
+- **Leer:** Los productos se leerán de forma automática cada vez que se entre la página, y así mismo se volverán a leer cada vez que haya un cambio en el inventario.
 
-- [5] Listado: Se deberá proporcionar una sección en la página de inicio donde se muestre un listado disponibles en la tienda. Cada producto deberá mostrar su nombre, cantidad disponible y una descripción breve
+- **Editar:** Al presionar el botón de "Editar" que se encuentra al lado de cada producto, podremos editar sus detalles y luego guardar. La tabla mostrará sus cambios a tiempo real sin necesidad de reiniciar.
 
+- **Borrar:** Al presionar el botón de "Eliminar" que se encuentra al lado de cada producto, podremos borrar el producto y la tabla se actualizará a tiempo real sin necesidad de reiniciar la página.
 
-# OJO:
+# **Estructura del Proyecto:**
 
-Utilizar una base de datos para almacenar y recuperar los datos de las notas (por ejemplo, MongoDB).
+**Carpeta Base:**
 
-El backend debe esta desarrollado en Nodejs
+- **node_modules/**: Esta carpeta es generada automáticamente cuando se instalan las dependencias del proyecto utilizando el comando `npm install`. Aquí se almacenan todas las bibliotecas y módulos de terceros necesarios para el funcionamiento del proyecto.
 
+- **public/**: Esta carpeta suele contener los archivos estáticos que se servirán públicamente en el proyecto, como imágenes, archivos CSS o cualquier otro recurso estático.
+- 
+- **vite.config.js**: Este archivo es la configuración del entorno de desarrollo basado en Vite. Vite es un entorno de compilación rápida para aplicaciones web modernas. 
 
-# [6] Recomendaciones:
+- **tailwind.config.js**: Este archivo es la configuración de Tailwind CSS, un framework de utilidades CSS altamente personalizable.
+- 
+- **postcss.config.js**: Este archivo es la configuración de PostCSS, una herramienta de transformación de CSS. Aquí puedes especificar los plugins de PostCSS que deseas utilizar y configurar sus opciones.
 
-- Utiliza componentes de React para modularizar y reutilizar el código
+- **package.json**: Este archivo es un archivo de configuración para administrar las dependencias y scripts de tu proyecto. Aquí se enumeran todas las dependencias del proyecto, así como los scripts definidos que se pueden ejecutar con el comando npm run.
 
-- Crea un repositorio distinto para el backend
+- **package-lock.json**: Este archivo se genera automáticamente cuando se instalan las dependencias del proyecto y se utiliza para bloquear versiones específicas de las dependencias.
 
-- Utiliza algún método de comunicación con el backend, como fetch o axios, para realizar las operaciones CRUD.
+- **.gitignore**: Este archivo se utiliza para especificar qué archivos y carpetas deben ser ignorados por Git, el sistema de control de versiones.
 
-- Organiza tu código siguiendo buenas prácticas de estructura y nomenclatura.
+- **eslintrc.cjs**: Este archivo es la configuración de ESLint, una herramienta de análisis de código estático para identificar y reportar patrones problemáticos en el código JavaScript.
 
-- Diseña una interfaz de usuario atractiva y temática, utilizando elementos visuales relacionados con ventas y con producto.
+**Carpeta SRC**
 
-- Considera agregar funcionalidades adicionales, como la posibilidad de filtrar los productos por categoría o ver detalles completos de un producto al hacer clic en ella.
+- **main.jsx**: Este archivo es el punto de entrada principal de la aplicación. Es comúnmente utilizado para importar y renderizar el componente principal de la aplicación, como el componente App. Aquí se configuran las rutas, se establece el tema o se realizan otras configuraciones globales de la aplicación.
 
-- Considerar usar librerias UI orientadas a componente de react. Sugerencias:
+- **index.css**: Este archivo contiene estilos CSS que se aplicarán a toda la aplicación.
 
-    * React-Bootstrap
-    * MDB React
-    * React-Strap
-    * Chakra UI
-    * Material UI
+- **app.jsx**: Este archivo es el componente principal de la aplicación. Es donde se define y se estructura la interfaz de usuario de la aplicación.
 
-# A ENTREGAR: 
+**La carpeta Components/ contiene:** 
 
-- Figma con todo el diseño UI UX de la App.
-- Vídeo con cámara Explicando el código y donde se utilizan los hooks y para que se usan, los problemas encontrados funcionamiento de la actividad e inicio. MAX: 15min 
-- Código en github con todos los commits en ambos repos. Evitar subir el repositorio con commits dummy
-- El Código debe estar documentado, es decir comentada las lineas mas importantes para que cualquier desarrollador entienda los procesos. 
-- El repositorio debe tener un README  donde explique como ejecutar el proyecto paso a paso, sea el frontend o el backend. 
-- Se va evaluar: UI UX, reutilización de componentes, optimización de código, comentaros dentro del código, readme repositorio. 
+- **Una carpeta Header/:** Esta carpeta contiene los componentes de encabezado de tu aplicación, así como un loader y el menú para navegar por la página.
+
+- **.prettierrc**: Este es un archivo de configuración para el formateador de código Prettier.
+
+- **crearProduct.jsx**: Este archivo define un componente de formulario para la adición de un producto.
+
+- **Hero.jsx**: Este archivo define el componente de la imagen al principio de la página.
+
+- **Footer.jsx**: Este archivo define el componente de pie de página de tu aplicación.
+
+- **ProductosL.jsx**: Este archivo define el componente de sección de una lista de productos no alterable.
+
+- **Tabla.jsx**: Este archivo define un componente de tabla de productos. Puede contener una tabla con información sobre productos, como nombre, precio, descripción, etc. Esta tabla puede ser modificable.
+
+La carpeta assets/ generalmente se utiliza para almacenar recursos estáticos, como imágenes, archivos de video, fuentes, iconos, etc. Puedes colocar cualquier archivo multimedia o recurso estático que necesites en el proyecto.
+
+# **Dependencias y DevDependencias**
+
+**Dependencias:**
+
+"@material-tailwind/react": "^2.1.2": Librería de componentes de interfaz de usuario basados en Tailwind CSS.
+
+"flowbite": "^1.8.1": Librería de componentes de interfaz de usuario para React.
+
+"flowbite-react": "^0.6.3": Librería de componentes de interfaz de usuario para React.
+
+"react": "^18.2.0": Biblioteca principal de React para construir interfaces de usuario.
+
+"react-dom": "^18.2.0": Renderizador de React para el navegador web.
+
+"tw-elements": "^1.0.0": Conjunto de componentes de interfaz de usuario basados en Tailwind CSS.
+
+**DevDependencies:**
+
+"@types/react": "^18.2.15": Definiciones de tipos TypeScript para React.
+
+"@types/react-dom": "^18.2.7": Definiciones de tipos TypeScript para ReactDOM.
+
+"@vitejs/plugin-react": "^4.0.3": Plugin de Vite para admitir la sintaxis de React.
+
+"autoprefixer": "^10.4.16": Plugin de PostCSS para agregar prefijos de proveedores en los estilos CSS.
+
+"eslint": "^8.45.0": Herramienta de análisis de código estático para JavaScript.
+
+"eslint-plugin-react": "^7.32.2": Plugin de ESLint para reglas específicas de React.
+
+"eslint-plugin-react-hooks": "^4.6.0": Plugin de ESLint para reglas específicas de los Hooks de React.
+
+"eslint-plugin-react-refresh": "^0.4.3": Plugin de ESLint para reglas específicas de React Refresh.
+
+"postcss": "^8.4.31": Herramienta de transformación de CSS.
+
+"tailwindcss": "^3.3.3": Framework de utilidades CSS altamente personalizable.
+
+"vite": "^4.4.5": Entorno de compilación rápida para aplicaciones web modernas.
+
+# **Autores:**
+
+- José Escalona / C.I: 28.206.133
+- Maikel Villegas Rojas / C.I: 30.302.836
+- Luis Monsalve / C.I: 30.380.310
+
+# **Enlaces:**
+
+- Proyecto en GitHub: [https://github.com/JoseEscalona18/Frontend-Actividad2-Front2]
+
+# **Muchas gracias por su atención**
