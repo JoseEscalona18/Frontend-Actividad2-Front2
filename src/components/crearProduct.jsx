@@ -1,6 +1,3 @@
-
-
-
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -32,14 +29,14 @@ function AgregarProductos() {
 
     try {
       const response = await axios.post(`${API}`, producto);
-      setRespuesta(response.data); // Guarda la respuesta en el estado "respuesta"
-      setMostrarMensaje(true); // Muestra el mensaje
+      setRespuesta(response.data); 
+      setMostrarMensaje(true); 
       setTimeout(() => {
-        setMostrarMensaje(false); // Oculta el mensaje después de 3 segundos
+        setMostrarMensaje(false); 
       }, 3000);
     } catch (error) {
       console.error(error);
-      setRespuesta('Ocurrió un error al agregar el producto'); // Guarda el mensaje de error en el estado "respuesta"
+      setRespuesta('Ocurrió un error al agregar el producto');
     }
   };
 
