@@ -7,6 +7,7 @@ import ProductosL from './components/ProductosL';
 import './App.css';
 import TablaProductos from './components/Tabla'
 import AgregarProductos from './components/crearProduct'
+import dotenv from 'dotenv'
 
   // El componente App es el componente principal de la aplicación.
 

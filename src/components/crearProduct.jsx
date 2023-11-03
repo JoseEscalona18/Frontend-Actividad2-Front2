@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const API = 'http://localhost:4000';
+const API = import.meta.env.VITE_BACKEND_URL
+
 
 function AgregarProductos() {
     // Estado local para almacenar los valores de los campos del formulario
@@ -54,7 +55,7 @@ function AgregarProductos() {
         <div>
           <h1 className="text-center text-3xl font-semibold tracking-tight text-gray-900">Agregar Producto</h1>
         </div>
-        <form className="mt-8 space-y-6 flex flex-col" onSubmit={handleSubmit}>
+        <form className="mt-8 space-y-6 flex flex-col" onSubmit={handleSubmit} enctype="multipart/form-data">
         <label>
           Serial:
           <input
@@ -110,12 +111,16 @@ function AgregarProductos() {
           />
         </label>
         <label>
-          Foto(URL):
+          Foto del Producto:
           <input
-            type="text"
-            value={imagen}
-            className='w-full rounded-lg'
-            onChange={(e) => setImagen(e.target.value)}
+            className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+            id="file_input"
+            type="file"
+            onChange={(e) => {
+              console.log(e.target.files[0]); // Agregar esta línea para imprimir en la consola
+              setImagen(e.target.files[0]);
+            }}
+            name="imagen"
           />
         </label>
           <div>

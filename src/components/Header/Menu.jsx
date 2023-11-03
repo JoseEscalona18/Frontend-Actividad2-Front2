@@ -26,12 +26,6 @@ const Menu = (props) => {
       >
         Crear
       </a>
-      <a
-        href="#"
-        className="block md:inline-block px-3 py-2 rounded-md hover:text-white hover:bg-rojo focus:outline-none focus:text-white focus:bg-rojo"
-      >
-        Contacto
-      </a>
     </div>
   );
 };

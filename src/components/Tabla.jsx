@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const API = 'http://localhost:4000';
-
+const API = import.meta.env.VITE_BACKEND_URL
 function TablaProductos() {
     // Estado para almacenar los datos de los productos
   const [data, setData] = useState([]);
