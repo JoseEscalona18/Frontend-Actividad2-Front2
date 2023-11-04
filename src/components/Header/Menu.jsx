@@ -18,13 +18,24 @@ const Menu = (props) => {
       >
         Inventario
       </a>
+
       <a
         href="#"
-        className="block md:inline-block px-3 py-2 rounded-md hover:text-white hover:bg-rojo focus:outline-none focus:text-white focus:bg-rojo"
-        onClick={props.toggleHeroVisibility}  // Llama a la función de toggleHeroVisibility
+        className="block md:inline-block px-3 py-2 rounded-md text-white bg-verdeo focus:outline-none focus:text-white focus:bg-verdeo"
+        onClick={props.toggleLVisibility} // Llama a la función de toggleTablaVisibility
 
       >
-        Crear
+        Login
+      </a>
+
+      
+      <a
+        href="#"
+        className="block md:inline-block px-3 py-2 rounded-md text-white bg-verdeo focus:outline-none focus:text-white focus:bg-verdeo"
+        onClick={props.toggleRVisibility} // Llama a la función de toggleTablaVisibility
+
+      >
+        Registro
       </a>
     </div>
   );
