@@ -28,6 +28,31 @@ const ProductCard = ({ imagen, title, description, availableQuantity, price }) =
 // Componente principal que muestra la lista de productos
 const ProductList = () => {
   const [products, setProducts] = useState([]);
+  const [buscarText, setBuscar] = useState('');
+  const [buscarButton, setButton] = useState('Buscar');
+  const [filtro, setFiltro] = useState('Nombre');
+  const [categoria, setCategoria] = useState('Computadoras');
+
+
+  const buscarPost = async (e) => {
+    e.preventDefault();
+
+    const buscar = {
+      busqueda: buscarText,
+      nombreBoton: buscarButton,
+      filtro: filtro,
+      categoria: categoria
+    };
+
+    try {
+      const response = await axios.post(`${API}`, buscar);
+
+      setProducts(response.data);
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
     // Se realiza una solicitud GET al API cuando el componente se monta
@@ -52,6 +77,60 @@ const ProductList = () => {
         <div className="bg-verdeo rounded-lg p-4 mx-4 sm:mx-28 mb-8">
           <h2 className="text-white text-3xl font-bold text-center">Productos en Venta</h2>
         </div>
+
+        <div className='pb-8'>
+            <form className='flex flex-col gap-2' method='POST' onSubmit={buscarPost}>
+
+            <label className='flex gap-2 items-center'>
+              Filtrar Por:
+              <select
+                value={filtro}
+                className="rounded-lg"
+                onChange={(e) => setFiltro(e.target.value)}
+              >
+                <option value="Nombre">Nombre</option>
+                <option value="Categoria">Categoria</option>
+              </select>
+            </label>
+            
+            <div className='flex gap-2'>
+
+            {filtro === 'Categoria' ? (
+              <select
+                value={categoria}
+                className=" w-full rounded-lg"
+                onChange={(e) => setCategoria(e.target.value)}
+              >
+                <option value="Computadoras">Computadoras</option>
+                <option value="Laptops">Laptops</option>
+                <option value="Perifericos">Periféricos</option>
+                <option value="Accesorios">Accesorios</option>
+                <option value="Telefonos">Teléfonos</option>
+              </select>
+            ) : (
+              <input
+                type="text"
+                value={buscarText}
+                className="w-full rounded-lg"
+                onChange={(e) => setBuscar(e.target.value)}
+              />
+            )}
+    
+              <button
+                  type="submit"
+                  value={buscarButton}
+                  className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-verdeo hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  onChange={(e) => setButton(parseFloat(e.target.value))}
+                >
+                  Buscar
+                </button>
+
+            </div>
+
+
+            </form>
+        </div>
+
         <div className="container mx-auto mb-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
             {/* Se itera sobre los productos y se muestra una tarjeta de producto por cada uno */}
