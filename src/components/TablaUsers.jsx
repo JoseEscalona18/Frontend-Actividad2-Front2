@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const API = import.meta.env.VITE_USERS_URL;
 const APIEDIT = import.meta.env.VITE_EDIT_URL;
@@ -24,8 +25,8 @@ const UserTable = () => {
 
   const editarUsuario = (usuario) => {
     setUsuarioSeleccionado(usuario);
+    setDatosActualizados({ ...usuario });
   };
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setDatosActualizados({ ...datosActualizados, [name]: value });
@@ -35,30 +36,41 @@ const UserTable = () => {
     event.preventDefault(); // Evita que la página se reinicie por defecto
   
     axios
-      .put(APIEDIT, {
-        correo: usuarioSeleccionado.correo,
-        datosActualizados,
-      })
-      .then((response) => {
-        // Actualiza los datos del usuario en la tabla
-        const usuariosActualizados = users.map((usuario) => {
-          if (usuario.correo === usuarioSeleccionado.correo) {
-            return { ...usuario, ...datosActualizados };
-          }
-          return usuario;
-        });
-        setUsers(usuariosActualizados);
-  
-        // Reinicia los estados
-        setUsuarioSeleccionado(null);
-        setDatosActualizados({});
-  
-        console.log(response.data.mensaje);
-      })
-      .catch((error) => {
-        console.error("Error al actualizar el usuario:", error);
+    .put(APIEDIT, {
+      correo: usuarioSeleccionado.correo,
+      datosActualizados,
+    })
+    .then((response) => {
+      const usuariosActualizados = users.map((usuario) => {
+        if (usuario.correo === usuarioSeleccionado.correo) {
+          return { ...usuario, ...datosActualizados };
+        }
+        return usuario;
       });
-  };
+      setUsers(usuariosActualizados);
+
+      setUsuarioSeleccionado(null);
+      setDatosActualizados({});
+
+      // Mensaje de confirmación
+      Swal.fire({
+        icon: 'success',
+        title: 'Usuario actualizado',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    })
+    .catch((error) => {
+      console.error('Error al actualizar el usuario:', error);
+
+      // Mensaje de error
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al actualizar el usuario',
+        text: 'Ocurrió un error al actualizar los datos del usuario. Por favor, inténtalo nuevamente.',
+      });
+    });
+};
 
   return (
     <div className="overflow-x-auto font-[Barlow]">
@@ -135,8 +147,8 @@ const UserTable = () => {
         </table>
       )}
 
-      {usuarioSeleccionado && (
-        <div className="mt-4">
+{usuarioSeleccionado && (
+        <div className="mx-24 font-[Barlow]">
           <h2 className="text-lg font-semibold">Editar usuario</h2>
           <form>
             <div className="flex flex-col mt-2">
@@ -147,6 +159,7 @@ const UserTable = () => {
                 name="nombre"
                 value={datosActualizados.nombre || ""}
                 onChange={handleInputChange}
+                className="border border-gray-300 p-2 rounded-md"
               />
             </div>
             <div className="flex flex-col mt-2">
@@ -157,11 +170,34 @@ const UserTable = () => {
                 name="apellido"
                 value={datosActualizados.apellido || ""}
                 onChange={handleInputChange}
+                className="border border-gray-300 p-2 rounded-md"
+              />
+            </div>
+            <div className="flex flex-col mt-2">
+              <label htmlFor="descripcion">Descripcion:</label>
+              <input
+                type="text"
+                id="descripcion"
+                name="descripcion"
+                value={datosActualizados.descripcion || ""}
+                onChange={handleInputChange}
+                className="border border-gray-300 p-2 rounded-md"
+              />
+            </div>
+            <div className="flex flex-col mt-2">
+              <label htmlFor="telefono">Teléfono:</label>
+              <input
+                type="text"
+                id="telefono"
+                name="telefono"
+                value={datosActualizados.telefono || ""}
+                onChange={handleInputChange}
+                className="border border-gray-300 p-2 rounded-md"
               />
             </div>
             {/* Otros campos del formulario */}
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+              className="bg-verdeo hover:bg-verdeo-dark text-white font-bold py-2 px-4 rounded mt-4"
               onClick={actualizarUsuario}
             >
               Guardar
