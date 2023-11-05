@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+
+const API = import.meta.env.VITE_LOGIN_URL;
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -12,13 +15,26 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Aquí puedes realizar la lógica de inicio de sesión
-    console.log('Email:', email);
-    console.log('Password:', password);
-  };
 
+    try {
+      const response = await axios.post(API, {
+        correo: email,
+        contraseña: password
+      });
+
+      const { token } = response.data.usuario;
+
+      // Guardar el token como una cookie
+      document.cookie = `token=${token}; path=/`;
+
+      console.log('Usuario logeado correctamente');
+      console.log('Token:', token);
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error);
+    }
+  };
   return (
     <div className="min-h-screen flex items-center justify-center font-[Barlow] bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">

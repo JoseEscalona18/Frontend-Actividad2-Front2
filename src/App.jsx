@@ -9,6 +9,10 @@ import TablaProductos from './components/Tabla'
 import AgregarProductos from './components/crearProduct'
 import Login from './components/Login'
 import Registro from './components/Registro'
+import Pfp from './components/Pfp'
+import TablaUsers from './components/TablaUsers'
+
+
 
 import dotenv from 'dotenv'
 
@@ -80,6 +84,8 @@ function App() {
         {/* El componente HeaderPrueba se renderiza y se le pasan las funciones toggleVisibility y toggleVisibility2 como propiedades. */}
 
         <HeaderPrueba toggleVisibility={toggleVisibility} toggleVisibility2={toggleVisibility2} toggleLVisibility={toggleLVisibility}  toggleRVisibility={toggleRVisibility} />
+        <Pfp></Pfp>
+        <TablaUsers></TablaUsers>
         {showHero && <Hero />}
         {showLogin && <Login/> }
         {showRegistro && <Registro/>}

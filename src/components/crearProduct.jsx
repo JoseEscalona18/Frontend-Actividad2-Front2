@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2'; // Importar SweetAlert2
 
 const API = import.meta.env.VITE_BACKEND_URL;
 
@@ -18,13 +19,13 @@ function AgregarProductos() {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append('serial',serial)
-    formData.append('nombre',nombre)
-    formData.append('descripcion',descripcion)
-    formData.append('cantidad',cantidad)
-    formData.append('precio',precio)
-    formData.append('categoria',categoria)
-    formData.append('imagen', imagen)
+    formData.append('serial', serial);
+    formData.append('nombre', nombre);
+    formData.append('descripcion', descripcion);
+    formData.append('cantidad', cantidad);
+    formData.append('precio', precio);
+    formData.append('categoria', categoria);
+    formData.append('imagen', imagen);
 
     // Verificar que los campos obligatorios no estén vacíos
     if (!serial || !nombre || !descripcion || cantidad <= 0 || precio <= 0 || !categoria || !imagen) {
@@ -43,13 +44,11 @@ function AgregarProductos() {
     };
 
     try {
-
       const response = await axios.post(`${API}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
-
 
       setRespuesta(response.data);
       setMostrarMensaje(true);
@@ -65,9 +64,23 @@ function AgregarProductos() {
       setPrecio(0);
       setCategoria('');
       setImagen('');
+
+      // Mostrar mensaje de confirmación con SweetAlert2
+      Swal.fire({
+        icon: 'success',
+        title: 'Producto agregado',
+        text: 'El producto se ha registrado exitosamente.',
+      });
     } catch (error) {
       console.error(error);
       setRespuesta('Ocurrió un error al agregar el producto');
+
+      // Mostrar mensaje de error con SweetAlert2
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Ocurrió un error al agregar el producto.',
+      });
     }
   };
 
@@ -131,11 +144,17 @@ function AgregarProductos() {
                 className="w-full rounded-lg"
                 onChange={(e) => setCategoria(e.target.value)}
               >
-                <option value="PC Escritorio">PC Escritorio</option>
-                <option value="Laptops">Laptops</option>
-                <option value="Perifericos">Periféricos</option>
-                <option value="Teléfonos">Teléfonos</option>
-                <option value="Accesorios">Accesorios</option>
+                  <option value="">Selecciona una categoría</option>
+                  <option value="Mouses">Mouses</option>
+                  <option value="Computadoras">Computadoras</option>
+                  <option value="Laptops">Laptops</option>
+                  <option value="Pantallas">Pantallas</option>
+                  <option value="Telefonos">Teléfonos</option>
+                  <option value="Teclados">Teclados</option>
+                  <option value="Perifericos">Periféricos</option>
+                  <option value="Consolas">Consolas</option>
+                  <option value="Juegos">Juegos</option>
+                  <option value="Otros">Otros</option>
               </select>
             </label>
             <label>
