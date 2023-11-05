@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { data } from 'autoprefixer';
 
 //Conexión al Backend a traves de localhost
 const API = import.meta.env.VITE_BACKEND_URL
 
 // Componente interno para mostrar la tarjeta de un producto
 const ProductCard = ({ imagen, title, description, availableQuantity, price }) => {
-
-  const imageUrl = URL.createObjectURL(new Blob([imagen.data], { type: imagen.contentType }));
-
   return (
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 font-[Barlow]">
-      <img className="p-8 rounded-t-lg" src={imageUrl} alt="imagen del producto" />
+    <img className="p-8 rounded-t-lg" src={imagen} alt="imagen del producto" />
       <div className="px-5 pb-5">
         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{title}</h5>
         <p className="text-gray-600 dark:text-gray-400">{description}</p>

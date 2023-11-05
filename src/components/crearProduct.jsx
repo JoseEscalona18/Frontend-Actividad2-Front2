@@ -17,6 +17,15 @@ function AgregarProductos() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const formData = new FormData();
+    formData.append('serial',serial)
+    formData.append('nombre',nombre)
+    formData.append('descripcion',descripcion)
+    formData.append('cantidad',cantidad)
+    formData.append('precio',precio)
+    formData.append('categoria',categoria)
+    formData.append('imagen', imagen)
+
     // Verificar que los campos obligatorios no estén vacíos
     if (!serial || !nombre || !descripcion || cantidad <= 0 || precio <= 0 || !categoria || !imagen) {
       setRespuesta('Por favor, completa todos los campos y asegúrate de que los valores numéricos sean mayores que cero.');
@@ -30,12 +39,18 @@ function AgregarProductos() {
       descripcion,
       cantidad,
       precio,
-      categoria,
-      imagen,
+      categoria
     };
 
     try {
-      const response = await axios.post(`${API}`, producto);
+
+      const response = await axios.post(`${API}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+
       setRespuesta(response.data);
       setMostrarMensaje(true);
 
@@ -111,12 +126,17 @@ function AgregarProductos() {
             </label>
             <label>
               Categoría:
-              <input
-                type="text"
+              <select
                 value={categoria}
                 className="w-full rounded-lg"
                 onChange={(e) => setCategoria(e.target.value)}
-              />
+              >
+                <option value="PC Escritorio">PC Escritorio</option>
+                <option value="Laptops">Laptops</option>
+                <option value="Perifericos">Periféricos</option>
+                <option value="Teléfonos">Teléfonos</option>
+                <option value="Accesorios">Accesorios</option>
+              </select>
             </label>
             <label>
               Foto del Producto:

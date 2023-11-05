@@ -58,7 +58,25 @@ function TablaProductos() {
       .get(API)
       .then((response) => {
         if (Array.isArray(response.data)) {
-          setData(response.data);
+
+          console.log(response.data)
+          console.log('↓')
+          const data = response.data
+
+          const filteredData = data.map(item => {
+            const filteredItem = Object.fromEntries(
+              Object.entries(item).filter(([key]) => key !== 'imagen')
+            );
+            return filteredItem;
+          });
+
+
+          console.log(filteredData)
+
+          setData(filteredData);
+
+
+console.log(filteredData);
         } else {
           setData([]);
         }
