@@ -13,7 +13,7 @@ const ProductCard = ({ imagen, title, description, availableQuantity, price }) =
       <div className="px-5 pb-5">
         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{title}</h5>
         <p className="text-gray-600 dark:text-gray-400">{description}</p>
-        <p className="text-gray-600 dark:text-gray-400">Available: {availableQuantity}</p>
+        <p className="text-gray-600 dark:text-gray-400"><b>Cantidad:</b> {availableQuantity}</p>
         <div className="flex flex-col sm:flex-row items-center justify-between mt-2.5">
           <span className="text-3xl font-bold text-gray-900 dark:text-white">${price}</span>
           <a href="#" className="mt-2 sm:mt-0 text-white bg-verdeo hover:bg-rojo focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
