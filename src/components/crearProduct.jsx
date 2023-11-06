@@ -145,16 +145,11 @@ function AgregarProductos() {
                 onChange={(e) => setCategoria(e.target.value)}
               >
                   <option value="">Selecciona una categoría</option>
-                  <option value="Mouses">Mouses</option>
                   <option value="Computadoras">Computadoras</option>
                   <option value="Laptops">Laptops</option>
-                  <option value="Pantallas">Pantallas</option>
                   <option value="Telefonos">Teléfonos</option>
-                  <option value="Teclados">Teclados</option>
                   <option value="Perifericos">Periféricos</option>
-                  <option value="Consolas">Consolas</option>
-                  <option value="Juegos">Juegos</option>
-                  <option value="Otros">Otros</option>
+
               </select>
             </label>
             <label>

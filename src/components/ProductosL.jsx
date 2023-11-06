@@ -9,7 +9,7 @@ const API = import.meta.env.VITE_BACKEND_URL
 const ProductCard = ({ imagen, title, description, availableQuantity, price }) => {
   return (
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 font-[Barlow]">
-    <img className="p-8 rounded-t-lg" src={imagen} alt="imagen del producto" />
+    <img className="p-8 rounded-t-lg h-96	" src={imagen} alt="imagen del producto" />
       <div className="px-5 pb-5">
         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{title}</h5>
         <p className="text-gray-600 dark:text-gray-400">{description}</p>
@@ -32,6 +32,10 @@ const ProductList = () => {
   const [buscarButton, setButton] = useState('Buscar');
   const [filtro, setFiltro] = useState('Nombre');
   const [categoria, setCategoria] = useState('Computadoras');
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 6;
+
+
 
 
   const buscarPost = async (e) => {
@@ -70,6 +74,10 @@ const ProductList = () => {
         console.error('Error:', error);
       });
   }, []);
+
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
 
   return (
     <div className="flex justify-center font-[Barlow]">
@@ -134,7 +142,7 @@ const ProductList = () => {
         <div className="container mx-auto mb-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
             {/* Se itera sobre los productos y se muestra una tarjeta de producto por cada uno */}
-            {products.map((product) => (
+            {currentProducts.map((product) => (
               <ProductCard
                 key={product.serial}
                 imagen={product.imagen}
@@ -145,6 +153,34 @@ const ProductList = () => {
               />
             ))}
           </div>
+
+          <div className="flex flex-col gap-2 items-center mt-5">
+            <div className='flex gap2-2'> 
+              <button
+              onClick={() => setCurrentPage(currentPage - 1)}
+              disabled={currentPage === 1}
+              className="px-4 py-2 mr-2 text-sm font-medium text-gray-800 bg-gray-200 rounded"
+            >
+              Anterior
+            </button>
+            <button
+              onClick={() => setCurrentPage(currentPage + 1)}
+              disabled={currentPage === Math.ceil(products.length / productsPerPage)}
+              className="px-4 py-2 text-sm font-medium text-gray-800 bg-gray-200 rounded"
+            >
+              Siguiente
+            </button>
+            </div>
+
+
+          <p className="text-gray-600 text-sm">
+            Página {currentPage} de {Math.ceil(products.length / productsPerPage)}
+          </p>
+
+
+        </div>
+
+
         </div>
       </div>
     </div>
