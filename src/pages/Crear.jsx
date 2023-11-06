@@ -8,14 +8,15 @@ import AgregarProductos from '../components/crearProduct'
 import Login from '../components/Login'
 import Registro from '../components/Registro'
 
-const Inicio = () => {
+const Crear = () => {
   return (
     <>
     <HeaderPrueba></HeaderPrueba>
+    <TablaProductos></TablaProductos>
     <AgregarProductos></AgregarProductos>
       <Footer></Footer>
     </>
   );
 };
 
-export default Inicio;
+export default Crear;

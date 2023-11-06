@@ -13,6 +13,8 @@ const Inicio = () => {
     <>
     <HeaderPrueba></HeaderPrueba>
       <Hero></Hero>
+      <ProductosL></ProductosL>
+      <Footer></Footer>
     </>
   );
 };
