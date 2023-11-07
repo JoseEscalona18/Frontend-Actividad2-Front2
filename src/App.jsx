@@ -24,7 +24,8 @@ const App = () => {
         
 
         <Route element = {<ProtectedRoute/>}>
-        <Route path='/Inventario' element={<div><TablaProductos/><AgregarProductos/></div>} />
+          
+        <Route path='/Inventario' element={<div><TablaProductos/><AgregarProductos/></div>} requiredrole = "admin" />
 
 
         </Route>

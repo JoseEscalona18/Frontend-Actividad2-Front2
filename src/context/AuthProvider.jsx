@@ -1,19 +1,15 @@
-    import React, { useState, useEffect, createContext } from 'react';
-    import axios from 'axios';
+import React, { useState, useEffect, createContext } from "react";
+import axios from "axios";
 
+export const AuthContext = createContext(); // Exporta el contexto
 
-    export const AuthContext = createContext(); // Exporta el contexto
+const API = import.meta.env.VITE_DECODE_URL;
 
-    const API = import.meta.env.VITE_DECODE_URL
+const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
 
-    
-
-    const AuthProvider = ({ children }) => {
-        const [user, setUser] = useState(null);
-    
-
-// Crear una función que haga la petición al back-end
-const getDecodedData = async () => {
+  // Crear una función que haga la petición al back-end
+  const getDecodedData = async () => {
     // Configurar las opciones de la petición
     const options = {
       // Especificar el método GET
@@ -24,8 +20,6 @@ const getDecodedData = async () => {
       withCredentials: true,
     };
 
-    
-  
     // Hacer la petición usando axios
     try {
       // Esperar la respuesta del back-end
@@ -34,19 +28,22 @@ const getDecodedData = async () => {
       const data = response.data.data;
       // Hacer algo con los datos, por ejemplo mostrarlos en la consola
       console.log(data);
+      setUser(data);
     } catch (error) {
       // Manejar el posible error, por ejemplo mostrarlo en la consola
       console.error(error);
     }
   };
 
-  getDecodedData()
-    
-        return (
-        <AuthContext.Provider value={{ user }}>
-            {children}
-        </AuthContext.Provider>
-        );
-    };
+  
+  useEffect(() => {
+    // Llamar a la función getDecodedData
+    getDecodedData();
+  }, []); // El array vacío indica que solo se ejecuta una vez al montar el componente
 
-    export default AuthProvider;
+  return (
+    <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
+  );
+};
+
+export default AuthProvider;
