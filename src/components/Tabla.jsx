@@ -179,153 +179,128 @@ console.log(filteredData);
       </button>
       {productoSeleccionado && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-75">
-          <div className="bg-white rounded-lg p-8 max-w-md">
-            <h3 className="text-2xl font-bold mb-4">Editar Producto</h3>
-            <form>
-              <div className="mb-4">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="nombre"
-                >
-                  Nombre:
-                </label>
-                <input
-                  type="text"
-                  id="nombre"
-                  name="nombre"
-                  value={edicionProducto.nombre}
-                  onChange={handleInputChange}
-                  className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
-                    errores.nombre ? "border-red-500" : ""
-                  }`}
-                />
-                {errores.nombre && (
-                  <p className="text-red-500 text-xs italic">
-                    {errores.nombre}
-                  </p>
-                )}
-              </div>
-              <div className="mb-4">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="descripcion"
-                >
-                  Descripción:
-                </label>
-                <textarea
-                  id="descripcion"
-                  name="descripcion"
-                  value={edicionProducto.descripcion}
-                  onChange={handleInputChange}
-                  className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
-                    errores.descripcion ? "border-red-500" : ""
-                  }`}
-                />
-                {errores.descripcion && (
-                  <p className="text-red-500 text-xs italic">
-                    {errores.descripcion}
-                  </p>
-                )}
-              </div>
-              <div className="mb-4">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="precio"
-                >
-                  Precio:
-                </label>
-                <input
-                  type="number"
-                  id="precio"
-                  name="precio"
-                  value={edicionProducto.precio}
-                  onChange={handleInputChange}
-                  className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
-                    errores.precio ? "border-red-500" : ""
-                  }`}
-                />
-                {errores.precio && (
-                  <p className="text-red-500 text-xs italic">
-                    {errores.precio}
-                  </p>
-                )}
-              </div>
-              <div className="mb-4">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="cantidad"
-                >
-                  Cantidad:
-                </label>
-                <input
-                  type="number"
-                  id="cantidad"
-                  name="cantidad"
-                  value={edicionProducto.cantidad}
-                  onChange={handleInputChange}
-                  className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
-                    errores.cantidad ? "border-red-500" : ""
-                  }`}
-                />
-                {errores.cantidad && (
-                  <p className="text-red-500 text-xs italic">
-                    {errores.cantidad}
-                  </p>
-                )}
-              </div>
-              <div className="mb-4">
-                <label
-                  className="block text-gray-700 text-sm font-boldmb-2"
-                  htmlFor="categoria"
-                >
-                  Categoría:
-                </label>
-                <select
-                  id="categoria"
-                  name="categoria"
-                  value={edicionProducto.categoria}
-                  onChange={handleInputChange}
-                  className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
-                    errores.categoria ? "border-red-500" : ""
-                  }`}
-                >
-                  <option value="">Selecciona una categoría</option>
-                  <option value="Mouses">Mouses</option>
-                  <option value="Computadoras">Computadoras</option>
-                  <option value="Laptops">Laptops</option>
-                  <option value="Pantallas">Pantallas</option>
-                  <option value="Telefonos">Teléfonos</option>
-                  <option value="Teclados">Teclados</option>
-                  <option value="Perifericos">Periféricos</option>
-                  <option value="Consolas">Consolas</option>
-                  <option value="Juegos">Juegos</option>
-                  <option value="Otros">Otros</option>
-                </select>
-                {errores.categoria && (
-                  <p className="text-red-500 text-xs italic">
-                    {errores.categoria}
-                  </p>
-                )}
-              </div>
-              <div className="flex justify-between">
-                <button
-                  type="button"
-                  className="bg-verdeo hover:bg-verdeo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  onClick={actualizarProducto}
-                >
-                  Guardar
-                </button>
-                <button
-                  type="button"
-                  className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  onClick={() => setProductoSeleccionado(null)}
-                >
-                  Cancelar
-                </button>
-              </div>
-            </form>
-          </div>
+        <div className="bg-white rounded-lg p-8 max-w-md">
+          <h3 className="text-2xl font-bold mb-4">Editar Producto</h3>
+          <form>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="nombre">
+                Nombre:
+              </label>
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                value={edicionProducto.nombre}
+                onChange={handleInputChange}
+                className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                  errores.nombre ? "border-red-500" : ""
+                }`}
+              />
+              {errores.nombre && (
+                <p className="text-red-500 text-xs italic">{errores.nombre}</p>
+              )}
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="descripcion">
+                Descripción:
+              </label>
+              <textarea
+                id="descripcion"
+                name="descripcion"
+                value={edicionProducto.descripcion}
+                onChange={handleInputChange}
+                className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                  errores.descripcion ? "border-red-500" : ""
+                }`}
+              />
+              {errores.descripcion && (
+                <p className="text-red-500 text-xs italic">{errores.descripcion}</p>
+              )}
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="precio">
+                Precio:
+              </label>
+              <input
+                type="number"
+                id="precio"
+                name="precio"
+                value={edicionProducto.precio}
+                onChange={handleInputChange}
+                className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                  errores.precio ? "border-red-500" : ""
+                }`}
+              />
+              {errores.precio && (
+                <p className="text-red-500 text-xs italic">{errores.precio}</p>
+              )}
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="cantidad">
+                Cantidad:
+              </label>
+              <input
+                type="number"
+                id="cantidad"
+                name="cantidad"
+                value={edicionProducto.cantidad}
+                onChange={handleInputChange}
+                className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                  errores.cantidad ? "border-red-500" : ""
+                }`}
+              />
+              {errores.cantidad && (
+                <p className="text-red-500 text-xs italic">{errores.cantidad}</p>
+              )}
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="categoria">
+                Categoría:
+              </label>
+              <select
+                id="categoria"
+                name="categoria"
+                value={edicionProducto.categoria}
+                onChange={handleInputChange}
+                className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                  errores.categoria ? "border-red-500" : ""
+                }`}
+              >
+                <option value="">Selecciona una categoría</option>
+                <option value="Mouses">Mouses</option>
+                <option value="Computadoras">Computadoras</option>
+                <option value="Laptops">Laptops</option>
+                <option value="Pantallas">Pantallas</option>
+                <option value="Telefonos">Teléfonos</option>
+                <option value="Teclados">Teclados</option>
+                <option value="Perifericos">Periféricos</option>
+                <option value="Consolas">Consolas</option>
+                <option value="Juegos">Juegos</option>
+                <option value="Otros">Otros</option>
+              </select>
+              {errores.categoria && (
+                <p className="text-red-500 text-xs italic">{errores.categoria}</p>
+             )}
+            </div>
+            <div className="flex justify-between">
+              <button
+                type="button"
+                className="bg-verdeo hover:bg-verdeo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                onClick={actualizarProducto}
+              >
+                Guardar
+              </button>
+              <button
+                type="button"
+                className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                onClick={() => setProductoSeleccionado(null)}
+              >
+                Cancelar
+              </button>
+            </div>
+          </form>
         </div>
+      </div>
       )}
       {datos.length > 0 ? (
         <table className="sm:text-xs md:text-sm text-left text-gray-500 dark:text-gray-400 mb-6 mx-auto">

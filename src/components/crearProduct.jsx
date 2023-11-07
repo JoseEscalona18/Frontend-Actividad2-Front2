@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2'; // Importar SweetAlert2
-import { useNavigate } from 'react-router-dom'; // Importar SweetAlert2
-
 
 const API = import.meta.env.VITE_BACKEND_URL;
 
@@ -83,7 +81,7 @@ function AgregarProductos() {
         title: 'Error',
         text: 'Ocurrió un error al agregar el producto.',
       }).then({
-
+        
       });
     }
   };

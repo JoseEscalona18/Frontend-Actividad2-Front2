@@ -9,19 +9,23 @@ import AgregarProductos from './components/crearProduct'
 import Login from './components/Login'
 import Registro from './components/Registro'
 import Pfp from './components/Pfp'
+import ProtectedRoute from "./components/ProtectedRoute";
+
 
 const App = () => {
   return (
     <BrowserRouter>
     <HeaderPrueba></HeaderPrueba>
         <Routes>
-            <Route path='/' element={<div><Hero/><ProductosL/></div>} />
+
+        <Route path='/' element={<div><Hero/><ProductosL/></div>} />
+
+
+
             <Route path='/Inventario' element={<div><TablaProductos/><AgregarProductos/></div>} />
             <Route path='/Login' element={<div><Login/></div>} />
             <Route path='/Registro' element={<div><Registro/></div>} />
             <Route path='/Pfp' element={<div><Pfp/></div>} />
-
-
 
 
         </Routes>
