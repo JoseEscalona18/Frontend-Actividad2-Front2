@@ -10,19 +10,24 @@ import Login from './components/Login'
 import Registro from './components/Registro'
 import Pfp from './components/Pfp'
 import ProtectedRoute from "./components/ProtectedRoute";
+import AuthProvider, { AuthContext } from './context/AuthProvider';
 
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
     <HeaderPrueba></HeaderPrueba>
         <Routes>
 
         <Route path='/' element={<div><Hero/><ProductosL/></div>} />
+        
+
+        <Route element = {<ProtectedRoute/>}>
+        <Route path='/Inventario' element={<div><TablaProductos/><AgregarProductos/></div>} />
 
 
-
-            <Route path='/Inventario' element={<div><TablaProductos/><AgregarProductos/></div>} />
+        </Route>
             <Route path='/Login' element={<div><Login/></div>} />
             <Route path='/Registro' element={<div><Registro/></div>} />
             <Route path='/Pfp' element={<div><Pfp/></div>} />
@@ -31,6 +36,8 @@ const App = () => {
         </Routes>
         <Footer></Footer>
     </BrowserRouter>
+    </AuthProvider>
+    
   );
 };
 

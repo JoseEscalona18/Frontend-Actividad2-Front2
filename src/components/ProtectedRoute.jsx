@@ -1,9 +1,9 @@
 import { Navigate, Outlet } from "react-router-dom";
 
 const ProtectedRoute = ({ }) => {
-    let isLogged = false
+    const user = document.cookie.includes('token=');
     
-    if (!isLogged){
+    if (!user){
         return <Navigate to="/Login"/>
     }
     
