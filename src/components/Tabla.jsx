@@ -160,6 +160,8 @@ console.log(filteredData);
     validarCampos();
   };
 
+  const datos = data
+
   return (
     /* Encabezado */
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg items-center flex flex-col mb-8 mt-8 font-[Barlow]">
@@ -325,7 +327,7 @@ console.log(filteredData);
           </div>
         </div>
       )}
-      {data.length > 0 ? (
+      {datos.length > 0 ? (
         <table className="sm:text-xs md:text-sm text-left text-gray-500 dark:text-gray-400 mb-6 mx-auto">
           <thead className="text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr className="text-center">
@@ -353,7 +355,7 @@ console.log(filteredData);
             </tr>
           </thead>
           <tbody>
-            {data.map((producto) => (
+            {data.map((producto) => ( //Guardar en estado de componente
               <tr key={producto.serial} id={producto.serial}>
                 <td className="sm:p-2 md:px-6 md:py-3 text-center">
                   {producto.serial}

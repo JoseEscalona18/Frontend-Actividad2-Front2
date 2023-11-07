@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2'; // Importar SweetAlert2
+import { useNavigate } from 'react-router-dom'; // Importar SweetAlert2
+
 
 const API = import.meta.env.VITE_BACKEND_URL;
 
@@ -80,13 +82,15 @@ function AgregarProductos() {
         icon: 'error',
         title: 'Error',
         text: 'Ocurrió un error al agregar el producto.',
+      }).then({
+
       });
     }
   };
 
   return (
     <div>
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 mb-8">
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 mb-8 mr-8">
         <div className="max-w-md w-full space-y-8">
           <div>
             <h1 className="text-center text-3xl font-semibold tracking-tight text-gray-900">Agregar Producto</h1>

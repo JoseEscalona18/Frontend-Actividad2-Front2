@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import {useNavigate} from "react-router-dom";
+
 
 const API = import.meta.env.VITE_REGISTER_URL;
 
@@ -12,6 +14,8 @@ const RegisterForm = () => {
   const [confirmContraseña, setConfirmContraseña] = useState("");
   const [contraseñasMatch, setContraseñasMatch] = useState(true);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -42,6 +46,8 @@ const RegisterForm = () => {
         icon: "success",
         title: "Usuario registrado",
         text: "El usuario se ha registrado exitosamente.",
+      }).then(() => {
+        navigate("/")
       });
     } catch (error) {
       setError("Ocurrió un error al registrar el usuario");
@@ -57,9 +63,9 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex justify-center items-center min-h-screen bg-verdearb">
       <form
-        className="bg-green-200 p-8 rounded-lg shadow-lg w-96"
+        className="bg-white p-8 rounded-lg shadow-lg w-96"
         onSubmit={handleSubmit}
       >
         <h2 className="text-2xl font-semibold mb-6">Registro</h2>
@@ -68,7 +74,7 @@ const RegisterForm = () => {
             Nombre
           </label>
           <input
-            className="w-full p-2 border border-gray-300 rounded-md"
+            className="w-full p-2 border border-verdeo rounded-md"
             type="text"
             id="nombre"
             value={nombre}
@@ -81,7 +87,7 @@ const RegisterForm = () => {
             Apellido
           </label>
           <input
-            className="w-full p-2 border border-gray-300 rounded-md"
+            className="w-full p-2 border border-verdeo rounded-md"
             type="text"
             id="apellido"
             value={apellido}
@@ -94,7 +100,7 @@ const RegisterForm = () => {
             Correo electrónico
           </label>
           <input
-            className="w-full p-2 border border-gray-300 rounded-md"
+            className="w-full p-2 border border-verdeo rounded-md"
             type="email"
             id="correo"
             value={correo}
@@ -107,7 +113,7 @@ const RegisterForm = () => {
             Contraseña
           </label>
           <input
-            className="w-full p-2 border border-gray-300 rounded-md"
+            className="w-full p-2 border border-verdeo rounded-md"
             type="password"
             id="contraseña"
             value={contraseña}
@@ -116,7 +122,7 @@ const RegisterForm = () => {
           />
         </div>
         <div className="mb-6">
-          <label className="block font-medium mb-2" htmlFor="confirmContraseña">
+          <label className="block font-medium border-verdeo mb-2" htmlFor="confirmContraseña">
             Confirmar Contraseña
           </label>
           <input
@@ -134,13 +140,13 @@ const RegisterForm = () => {
           />
           {!contraseñasMatch && (
             <p className="text-red-500 text-sm mt-1">
-              Las contraseñasno coinciden.
+              Las contraseñas no coinciden.
             </p>
           )}
         </div>
         {error && <div className="text-red-500 text-sm mb-4">{error}</div>}
         <button
-          className="bg-green-500 text-white py-2 px-4 rounded-md w-full hover:bg-green-600"
+          className="bg-verdeo text-white py-2 px-4 rounded-md w-full hover:bg-rojo"
           type="submit"
         >
           Registrarse

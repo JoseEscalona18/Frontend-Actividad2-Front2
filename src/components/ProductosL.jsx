@@ -1,22 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { data } from 'autoprefixer';
+import { FaStar } from 'react-icons/fa';
+
 
 //Conexión al Backend a traves de localhost
 const API = import.meta.env.VITE_BACKEND_URL
 
 // Componente interno para mostrar la tarjeta de un producto
 const ProductCard = ({ imagen, title, description, availableQuantity, price }) => {
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const toggleFavorite = () => {
+    setIsFavorite(!isFavorite);
+  };
+
   return (
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 font-[Barlow]">
-    <img className="p-8 rounded-t-lg h-96	" src={imagen} alt="imagen del producto" />
+      <img className="p-8 rounded-t-lg h-96" src={imagen} alt="imagen del producto" />
       <div className="px-5 pb-5">
         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{title}</h5>
         <p className="text-gray-600 dark:text-gray-400">{description}</p>
-        <p className="text-gray-600 dark:text-gray-400"><b>Cantidad:</b> {availableQuantity}</p>
+        <p className="text-gray-600 dark:text-gray-400">
+          <b>Cantidad:</b> {availableQuantity}
+        </p>
         <div className="flex flex-col sm:flex-row items-center justify-between mt-2.5">
           <span className="text-3xl font-bold text-gray-900 dark:text-white">${price}</span>
-          <a href="#" className="mt-2 sm:mt-0 text-white bg-verdeo hover:bg-rojo focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+          {document.cookie.includes('token') && (
+            <button
+              onClick={toggleFavorite}
+              className={`mt-2 sm:mt-0 ${isFavorite ? 'text-yellow-500' : 'text-gray-400'}`}
+            >
+              <FaStar size={24} />
+            </button>
+          )}
+          <a
+            href="#"
+            className="mt-2 sm:mt-0 text-white bg-verdeo hover:bg-rojo focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
             Ver más
           </a>
         </div>
@@ -24,7 +44,6 @@ const ProductCard = ({ imagen, title, description, availableQuantity, price }) =
     </div>
   );
 };
-
 // Componente principal que muestra la lista de productos
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -35,6 +54,11 @@ const ProductList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 6;
 
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const toggleFavorite = () => {
+    setIsFavorite(!isFavorite);
+  };
 
 
 

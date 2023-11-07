@@ -7,41 +7,15 @@ function HeaderPrueba(props) {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const toggleHeroVisibility = () => {
-    setLoading(true);
-
-    setTimeout(() => {
-      setLoading(false);
-      props.toggleVisibility();
-    }, 3000);
-  };
-
-  const toggleTablaVisibility = () => {
-    setLoading(true);
-
-    setTimeout(() => {
-      setLoading(false);
-      props.toggleVisibility2();
-    }, 3000);
-  };
-
   const toggleLVisibility = () => {
     setLoading(true);
 
     setTimeout(() => {
       setLoading(false);
-      props.toggleLVisibility();
     }, 3000);
   };
 
-  const toggleRVisibility = () => {
-    setLoading(true);
 
-    setTimeout(() => {
-      setLoading(false);
-      props.toggleRVisibility();
-    }, 3000);
-  };
 
   // El componente HeaderPrueba representa la barra de navegación en la parte superior de la página.
 
@@ -64,7 +38,7 @@ function HeaderPrueba(props) {
           Tienda UVM
         </div>
         <div className="hidden md:block">
-          <Menu toggleHeroVisibility={toggleHeroVisibility} toggleTablaVisibility={toggleTablaVisibility} toggleLVisibility={toggleLVisibility} toggleRVisibility={toggleRVisibility} />
+          <Menu  toggleLVisibility={toggleLVisibility}  />
           
 
         </div>
@@ -88,7 +62,7 @@ function HeaderPrueba(props) {
           </svg>
         </button>
       </div>
-      <div className="md:hidden">{showMobileMenu && <Menu toggleHeroVisibility={toggleHeroVisibility} toggleTablaVisibility={toggleTablaVisibility} toggleLVisibility={toggleLVisibility} toggleRVisibility={toggleRVisibility} />}</div>
+      <div className="md:hidden">{showMobileMenu && <Menu toggleLVisibility = {toggleLVisibility} />}</div>
       {/* El bloque de código anterior representa el menú desplegable para dispositivos móviles. Se muestra solo cuando showMobileMenu es verdadero. */}
       {loading && <Loader />}
       {/* El componente Loader se muestra si loading es verdadero, lo que indica que se está realizando una carga. */}
