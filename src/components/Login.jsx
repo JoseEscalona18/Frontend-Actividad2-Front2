@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate} from "react-router-dom";
 import Swal from 'sweetalert2';
+import AuthProvider, {AuthContext} from "../context/AuthProvider";// Ruta relativa al archivo AuthProvider
 
 
 const API = import.meta.env.VITE_LOGIN_URL;
@@ -10,6 +11,8 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { getDecodedData } = useContext(AuthContext); // Obtener la función getDecodedData del contexto
+
 
 
   const handleEmailChange = (e) => {
@@ -40,7 +43,9 @@ const Login = () => {
         title: 'Inicio de sesión exitoso',
         text: '¡Bienvenido!',
       }).then(() => {
+        getDecodedData();
         navigate("/")
+        
       });
     } catch (error) {
       console.error('Error al iniciar sesión:', error);

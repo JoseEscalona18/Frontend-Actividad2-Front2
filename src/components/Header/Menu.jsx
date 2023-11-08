@@ -1,21 +1,11 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useContext } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider";
 
 const Menu = (props) => {
   const location = useLocation();
-  const isTokenPresent = document.cookie.includes('token=');
-
-  const handleLogout = () => {
-    // Eliminar la cookie (si estás utilizando cookies para almacenar el token de autenticación)
-    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-
-    // Limpiar el almacenamiento local (localStorage o sessionStorage)
-    localStorage.removeItem("token");
-    // O
-    // sessionStorage.removeItem("token");
-
-    // Realizar cualquier otra limpieza o redireccionamiento necesario después de cerrar sesión
-  };
+  const isTokenPresent = document.cookie.includes("token=");
+  const { user, loggedIn, logout } = useContext(AuthContext);
 
   return (
     <div className="px-2 md:px-0 py-3 space-y-2 md:space-y-0 md:space-x-2 font-medium text-slate-700 font-[Barlow]">
@@ -27,24 +17,34 @@ const Menu = (props) => {
         Inicio
       </Link>
 
-      {isTokenPresent && (
-        <Link
-        to="/Inventario"
-        className="block md:inline-block px-3 py-2 rounded-md text-white bg-verdeo focus:outline-none focus:text-white focus:bg-verdeo"
-        onClick={props.toggleLVisibility}
-      >
-        Inventario
-      </Link>
+      {user?.rol === "admin" && (
+        <>
+          <Link
+            to="/Inventario"
+            className="block md:inline-block px-3 py-2 rounded-md text-white bg-verdeo focus:outline-none focus:text-white focus:bg-verdeo"
+            onClick={props.toggleLVisibility}
+          >
+            Inventario
+          </Link>
 
+          <Link
+            to="/Admin"
+            className={`block md:inline-block px-3 py-2 rounded-md text-white bg-verdeo focus:outline-none focus:text-white focus:bg-verdeo ${
+              location.pathname === "/Registro" ? "hidden" : ""
+            }`}
+            onClick={props.toggleLVisibility}
+          >
+            Admin
+          </Link>
+        </>
       )}
 
-      
       {!isTokenPresent && (
         <>
           <Link
             to="/Login"
             className={`block md:inline-block px-3 py-2 rounded-md text-white bg-verdeo focus:outline-none focus:text-white focus:bg-verdeo ${
-              location.pathname === '/Login' ? 'hidden' : ''
+              location.pathname === "/Login" ? "hidden" : ""
             }`}
             onClick={props.toggleLVisibility}
           >
@@ -54,7 +54,7 @@ const Menu = (props) => {
           <Link
             to="/Registro"
             className={`block md:inline-block px-3 py-2 rounded-md text-white bg-verdeo focus:outline-none focus:text-white focus:bg-verdeo ${
-              location.pathname === '/Registro' ? 'hidden' : ''
+              location.pathname === "/Registro" ? "hidden" : ""
             }`}
             onClick={props.toggleLVisibility}
           >
@@ -63,26 +63,24 @@ const Menu = (props) => {
         </>
       )}
 
-      {isTokenPresent && (
+      {isTokenPresent && loggedIn && (
         <Link
-          to="/Login"
+          to="/"
           className="block md:inline-block px-3 py-2 rounded-md text-white bg-verdeo focus:outline-none focus:text-white focus:bg-verdeo"
-          onClick={handleLogout}
+          onClick={logout} // Utilizar la función logout para realizar el logout
         >
           Logout
         </Link>
       )}
-      {isTokenPresent && (
-         <Link
-         to="/Pfp"
-         className="block md:inline-block px-3 py-2 rounded-md text-white bg-verdeo focus:outline-none focus:text-white focus:bg-verdeo"
-         onClick={props.toggleLVisibility}
-       >
-         Perfil
-       </Link>
+      {isTokenPresent && loggedIn && (
+        <Link
+          to="/Pfp"
+          className="block md:inline-block px-3 py-2 rounded-md text-white bg-verdeo focus:outline-none focus:text-white focus:bg-verdeo"
+          onClick={props.toggleLVisibility}
+        >
+          Perfil
+        </Link>
       )}
-
-     
     </div>
   );
 };
