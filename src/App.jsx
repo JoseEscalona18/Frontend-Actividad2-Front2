@@ -16,29 +16,29 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
   return (
-    <AuthProvider>
-      <BrowserRouter>
-    <HeaderPrueba></HeaderPrueba>
-        <Routes>
+    <AuthProvider> 
+    <BrowserRouter> 
+  <HeaderPrueba></HeaderPrueba> 
+      <Routes> 
 
-        <Route path='/' element={<div><Hero/><ProductosL/></div>} />
-        
-
-        <Route element = {<ProtectedRoute/>}>
-          
-        <Route path='/Inventario' element={<div><TablaProductos/><AgregarProductos/></div>} requiredrole = "admin" />
+      <Route path='/' element={<div><Hero/><ProductosL/></div>} /> 
+       
 
 
-        </Route>
-            <Route path='/Login' element={<div><Login/></div>} />
-            <Route path='/Registro' element={<div><Registro/></div>} />
-            <Route path='/Pfp' element={<div><Pfp/></div>} />
+         
+      <Route path='/Inventario' element={<div><TablaProductos/><AgregarProductos/></div>}  /> 
 
 
-        </Routes>
-        <Footer></Footer>
-    </BrowserRouter>
-    </AuthProvider>
+  
+          <Route path='/Login' element={<div><Login/></div>} /> 
+          <Route path='/Registro' element={<div><Registro/></div>} /> 
+          <Route path='/Pfp' element={<div><Pfp/></div>} /> 
+
+
+      </Routes> 
+      <Footer></Footer> 
+  </BrowserRouter> 
+  </AuthProvider>
     
   );
 };
