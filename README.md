@@ -99,6 +99,10 @@ La aplicación es una SPA (Single Page Application), esta nos permite hacer un C
 
 La carpeta assets/ generalmente se utiliza para almacenar recursos estáticos, como imágenes, archivos de video, fuentes, iconos, etc. Puedes colocar cualquier archivo multimedia o recurso estático que necesites en el proyecto.
 
+La carpeta de context: Posee los context de la aplicación, como por ejemplo el AuthProvider que sirve para la autenticación de permisos, extrayendo y decodificando la cookie(token)
+que se encuentre activa
+
+
 # **Dependencias y DevDependencias**
 
 **Dependencias:**
