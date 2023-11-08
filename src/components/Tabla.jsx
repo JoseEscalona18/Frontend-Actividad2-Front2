@@ -261,13 +261,10 @@ function TablaProductos() {
                 <option value="Mouses">Mouses</option>
                 <option value="Computadoras">Computadoras</option>
                 <option value="Laptops">Laptops</option>
-                <option value="Pantallas">Pantallas</option>
                 <option value="Telefonos">Teléfonos</option>
                 <option value="Teclados">Teclados</option>
                 <option value="Perifericos">Periféricos</option>
-                <option value="Consolas">Consolas</option>
-                <option value="Juegos">Juegos</option>
-                <option value="Otros">Otros</option>
+
               </select>
               {errores.categoria && (
                 <p className="text-red-500 text-xs italic">{errores.categoria}</p>
