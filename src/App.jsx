@@ -1,4 +1,5 @@
 import React from "react";
+import AuthProvider, { AuthContext } from './context/AuthProvider';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Hero from "./components/Hero";
 import HeaderPrueba from './components/Header/HeaderPrueba';
@@ -10,7 +11,7 @@ import Login from './components/Login'
 import Registro from './components/Registro'
 import Pfp from './components/Pfp'
 import ProtectedRoute from "./components/ProtectedRoute";
-import AuthProvider, { AuthContext } from './context/AuthProvider';
+
 
 
 const App = () => {

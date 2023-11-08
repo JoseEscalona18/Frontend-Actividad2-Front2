@@ -1,17 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { FaStar } from 'react-icons/fa';
 
+import { AuthContext } from '../context/AuthProvider'
 
 //Conexión al Backend a traves de localhost
 const API = import.meta.env.VITE_BACKEND_URL
 
 // Componente interno para mostrar la tarjeta de un producto
-const ProductCard = ({ imagen, title, description, availableQuantity, price }) => {
+const ProductCard = ({ imagen, title, description, availableQuantity, price, serial }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const [action, setAction] = useState('');
 
-  const toggleFavorite = () => {
+  let { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    setAction(isFavorite ? 'Quitar' : 'Agregar');
+  }, [isFavorite]);
+
+  const toggleFavorite = async () => {
     setIsFavorite(!isFavorite);
+    try {
+      await axios.post(API, {
+        nombreBoton: 'Favorito',
+        idUser: user.id,
+        serial: serial,
+        action: isFavorite ? 'Quitar' : 'Agregar'
+      });
+
+      console.log('Favorito guardado correctamente.');
+    } catch (error) {
+      console.error('Error al guardar el favorito:', error);
+    }
   };
 
   return (
@@ -27,8 +47,8 @@ const ProductCard = ({ imagen, title, description, availableQuantity, price }) =
           <span className="text-3xl font-bold text-gray-900 dark:text-white">${price}</span>
           {document.cookie.includes('token') && (
             <button
-              onClick={toggleFavorite}
               className={`mt-2 sm:mt-0 ${isFavorite ? 'text-yellow-500' : 'text-gray-400'}`}
+              onClick={toggleFavorite}
             >
               <FaStar size={24} />
             </button>
@@ -53,14 +73,9 @@ const ProductList = () => {
   const [categoria, setCategoria] = useState('Computadoras');
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 6;
-
-  const [isFavorite, setIsFavorite] = useState(false);
-
-  const toggleFavorite = () => {
-    setIsFavorite(!isFavorite);
-  };
-
-
+  const { user } = useContext(AuthContext);
+  console.log(user)
+  const userId = user ? user.id : null;
 
   const buscarPost = async (e) => {
     e.preventDefault();
@@ -84,7 +99,7 @@ const ProductList = () => {
 
   useEffect(() => {
     // Se realiza una solicitud GET al API cuando el componente se monta
-    axios.get(API)
+    axios.get(`${API}?userId=${userId}`)
       .then(response => {
         // Si la respuesta es un arreglo, se establece como estado del componente
         if (Array.isArray(response.data)) {
@@ -174,6 +189,7 @@ const ProductList = () => {
                 description={product.descripcion}
                 availableQuantity={product.cantidad}
                 price={product.precio}
+                serial={product.serial}
               />
             ))}
           </div>

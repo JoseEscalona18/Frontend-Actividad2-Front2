@@ -4,8 +4,6 @@ import { AuthContext } from '../context/AuthProvider';
 
 const ProtectedRoute = ({ element, requiredRole }) => {
   const { user } = useContext(AuthContext);
-  console.log(user)
-
 
   if (!user) {
     // Si el usuario no está autenticado, redirigirlo a la página de inicio de sesión

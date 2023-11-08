@@ -12,7 +12,6 @@ const ProfileComponent = () => {
     const fetchUserData = async () => {
       try {
         const response = await axios.get(API, { withCredentials: true });
-        console.log(response)
         setUser(response.data);
       } catch (error) {
         console.error('Error al obtener los datos del usuario:', error);

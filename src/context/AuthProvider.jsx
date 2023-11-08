@@ -27,7 +27,7 @@ const AuthProvider = ({ children }) => {
       // Obtener los datos decodificados del back-end
       const data = response.data.data;
       // Hacer algo con los datos, por ejemplo mostrarlos en la consola
-      console.log(data);
+      console.log(data + ' a');
       setUser(data);
     } catch (error) {
       // Manejar el posible error, por ejemplo mostrarlo en la consola

@@ -58,9 +58,6 @@ function TablaProductos() {
       .get(API)
       .then((response) => {
         if (Array.isArray(response.data)) {
-
-          console.log(response.data)
-          console.log('↓')
           const data = response.data
 
           const filteredData = data.map(item => {
@@ -69,14 +66,8 @@ function TablaProductos() {
             );
             return filteredItem;
           });
-
-
-          console.log(filteredData)
-
           setData(filteredData);
 
-
-console.log(filteredData);
         } else {
           setData([]);
         }
