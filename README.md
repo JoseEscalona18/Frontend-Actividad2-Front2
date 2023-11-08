@@ -15,6 +15,8 @@ Es una aplicación web creada utilizando ReactJS con Vite como bundler, Tailwind
 
 5. Luego, abrimos Visual Studio Code y pasamos/abrimos la carpeta dentro del programa, desde Archivo/Abrir Carpeta, y hacemos lo mismo en otra ventana, una para el back y otra para el front
 
+5.5. Pasamos las variables de entornos, la de .env a el Backend y la de .env.local al Front-End
+
 6. Ahora que tenemos nuestro proyecto colocado, tan solo tenemos que abrir consola con CTRL + Ñ o Desde Terminal/Abrir Terminal en cada una de las ventanas
 
 7. Al iniciar la terminal, vamos a instalar los paquetes que tiene el proyecto, utilizando `npm i` o `npm install` esto debe hacerse en ambas ventanas
@@ -22,6 +24,9 @@ Es una aplicación web creada utilizando ReactJS con Vite como bundler, Tailwind
 8. Luego usamos el comando `npm run dev` y el programa se ejecutara, esto debe hacerse en ambas ventanas
 
 9. Vamos hacia [http://localhost:3000](http://localhost:3000) y ahí tendremos la página ejecutándose.
+
+10. El admin es admin@gmail.com , su contraseña es 123, para que puedan probar el modo Admin.
+
 
 # **Uso:**
 
@@ -34,6 +39,17 @@ La aplicación es una SPA (Single Page Application), esta nos permite hacer un C
 - **Editar:** Al presionar el botón de "Editar" que se encuentra al lado de cada producto, podremos editar sus detalles y luego guardar. La tabla mostrará sus cambios a tiempo real sin necesidad de reiniciar.
 
 - **Borrar:** Al presionar el botón de "Eliminar" que se encuentra al lado de cada producto, podremos borrar el producto y la tabla se actualizará a tiempo real sin necesidad de reiniciar la página.
+
+- Login: Puedes loguearte como usuario, tendras el rol de usuario o puedes acceder con la cuenta de admin
+
+- Registro: Puedes registrarte como un usuario, a partir de campos de datos, y luego accederas como usuario
+
+- Favoritos: Puedes asignar productos favoritos al estar logueado y se veran reflejados en la BD
+
+- Tabla Users: Puedes ver y modificar los usuarios, siendo admin
+
+- Las rutas estan protegidas por permisos, dados desde el Front a partir de ciertos requisitos 
+
 
 # **Estructura del Proyecto:**
 
@@ -98,6 +114,12 @@ La carpeta assets/ generalmente se utiliza para almacenar recursos estáticos, c
 "react-dom": "^18.2.0": Renderizador de React para el navegador web.
 
 "tw-elements": "^1.0.0": Conjunto de componentes de interfaz de usuario basados en Tailwind CSS.
+
+"react-router": Para establecer rutas en el servidor de Front y emplearlo de forma reactiva
+
+"react-icons": Para usar iconos como los de Font Awesome
+
+"sweetalert2": Alertas y mensajes personalizados
 
 **DevDependencies:**
 
