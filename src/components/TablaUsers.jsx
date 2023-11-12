@@ -73,7 +73,7 @@ const UserTable = () => {
 };
 
   return (
-    <div className="overflow-x-auto font-[Barlow]">
+    <div className="overflow-x-auto font-[Barlow] mb-8">
               <div className="bg-verdeo rounded-lg p-4 mx-4 mt-4 sm:mx-28 mb-8">
           <h2 className="text-white text-3xl font-bold text-center">Lista de Usuarios</h2>
         </div>

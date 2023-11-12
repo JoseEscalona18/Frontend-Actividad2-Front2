@@ -34,7 +34,7 @@ const Footer = () => {
             Tu tienda favorita en la venta de productos electrónicos
           </p>
           {/* Enlaces */}
-          <ul className="flex flex-wrap justify-center items-center mb-6 text-white space-x-6">
+          <ul className="flex flex-wrap justify-center items-center mb-6 text-white space-x-80">
             {/* Utilizar la clase space-x-6 */}
             <li>
               <Link to="/" className="hover:underline hover:text-rojo" onClick={toggleLoading}>
